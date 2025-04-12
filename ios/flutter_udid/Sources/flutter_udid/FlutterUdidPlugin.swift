@@ -4,7 +4,7 @@ import SAMKeychain
 
 public class FlutterUdidPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "flutter_udid", binaryMessenger: registrar.messenger)
+        let channel = FlutterMethodChannel(name: "flutter_udid", binaryMessenger: registrar.messenger())
         let instance = FlutterUdidPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
