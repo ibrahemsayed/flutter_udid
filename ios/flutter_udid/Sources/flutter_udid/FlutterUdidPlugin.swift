@@ -4,13 +4,8 @@ import SAMKeychain
 
 public class FlutterUdidPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
-        // Safely create channel with null check
-        guard let messenger = registrar.messenger() else {
-            print("Error: FlutterUdidPlugin - messenger is nil")
-            return
-        }
-        
-        let channel = FlutterMethodChannel(name: "flutter_udid", binaryMessenger: messenger)
+        // The messenger is not optional in newer Flutter versions, so we don't need to check for nil
+        let channel = FlutterMethodChannel(name: "flutter_udid", binaryMessenger: registrar.messenger())
         let instance = FlutterUdidPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
